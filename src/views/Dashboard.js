@@ -1,5 +1,6 @@
 import React from "react";
 import ChartistGraph from "react-chartist";
+import Deliveries from "components/Deliveries/Deliveries";
 // react-bootstrap components
 import {
   Badge,
@@ -631,6 +632,73 @@ function Dashboard() {
               </Card.Footer>
             </Card>
           </Col>
+        </Row>
+        <Row>
+        <Col md="6">
+            <Card className="strpied-tabled-with-hover">
+              <Card.Header>
+                <Card.Title as="h4">Deliveries</Card.Title>
+                <p className="card-category">Next Deliveries</p>
+              </Card.Header>
+              <Card.Body>
+                <div className="table-full-width">
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <tr>
+                          Guilhain
+                          </tr>
+                          <tr>
+                            Benjamin
+                          </tr>  
+                        </td>
+                        <td>
+                          <tr>MER Sxxxx</tr>
+                          <tr>MEP Sxxxx</tr>
+                        </td>
+                        <td>
+                          Description avec un détail de ce qui est inclus dans la livraison
+                        </td>
+                        <td>
+                          <tr>http//fsdfkshfjdfsdkjfhsdkfdsjkfhsjkdhfk/sjfklshjflkdsjlfjsd/fjsdklfjsdl</tr>
+                          <tr>http//fsdfkshfjdfsdkjfhsdkfdsjkfhsjkdhfk/sjfklshjflkdsjlfjsd/fjsdklfjsdl</tr>
+                        </td>
+                        <td className="td-actions text-right">
+                          <OverlayTrigger
+                            overlay={
+                              <Tooltip id="tooltip-488980961">
+                                Edit Task..
+                              </Tooltip>
+                            }
+                          >
+                            <Button
+                              className="btn-simple btn-link p-1"
+                              type="button"
+                              variant="info"
+                            >
+                              <i className="fas fa-edit"></i>
+                            </Button>
+                          </OverlayTrigger>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </Table>
+                </div>
+              </Card.Body>
+              <Card.Footer>
+                <hr></hr>
+                <div className="stats">
+                  <i className="now-ui-icons loader_refresh spin"></i>
+                  Updated 3 minutes ago
+                </div>
+              </Card.Footer>
+            </Card>
+        </Col>
+        <Col md="6">
+            <Deliveries></Deliveries>
+        </Col>
         </Row>
       </Container>
     </>
