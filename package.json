@@ -7,6 +7,7 @@
     "bootstrap": "4.6.0",
     "chartist": "0.10.1",
     "express": "^4.17.3",
+    "express-promise-router": "^4.1.1",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "node-sass": "4.14.1",
@@ -35,7 +36,7 @@
     "minify:scss": "node-sass src/assets/scss/light-bootstrap-dashboard-react.scss src/assets/css/light-bootstrap-dashboard-react.min.css --output-style compressed",
     "map:scss": "node-sass src/assets/scss/light-bootstrap-dashboard-react.scss src/assets/css/light-bootstrap-dashboard-react.css --source-map true",
     "build:scss": "npm run compile:scss && npm run minify:scss && npm run map:scss",
-    "serverStart": "node server.js"
+    "startServer": "node server.js"
   },
   "proxy": "http://localhost:3001",
   "browserslist": {

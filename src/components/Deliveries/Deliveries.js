@@ -17,7 +17,7 @@ class Deliveries extends Component {
 
 
     handleCreate() {
-        this.setState({show: true})
+        this.setState({show: true, members: []})
     }
 
     async componentDidMount() {
@@ -37,18 +37,27 @@ class Deliveries extends Component {
             reformated_delivery.mer_date = delivery.week_mer
             reformated_delivery.descr = delivery.description
             reformated_delivery.jiras = delivery.jira_links
+            reformated_delivery.id_delivery = delivery.id
             
             list_of_deliveries.push(reformated_delivery)
         });
+        
+        const members_declared = await fetch('/members');
+        const json_members = await members_declared.json();
         console.log(list_of_deliveries)
-        this.setState({deliveries: list_of_deliveries})
+        console.log(json_members)
+        this.setState({deliveries: list_of_deliveries, members: json_members})
     }
 
     render() {
-        const {deliveries, show} = this.state
+        const {deliveries, show, members} = this.state
 
         const handleClose = () => this.setState({show: false});
         const handleShow = () => this.setState({show: true});
+
+        const getId = (id) => {
+          console.log(id)
+        }
       
         return (
             <>
@@ -95,6 +104,7 @@ class Deliveries extends Component {
                           className="btn-simple btn-link p-1"
                           type="button"
                           variant="info"
+                          onClick={() => console.log(delivery.id_delivery)}
                         >
                           <i className="fas fa-edit"></i>
                         </Button>
@@ -146,14 +156,24 @@ class Deliveries extends Component {
                                 <tr>
                                     <td>
                         <Form.Group controlId="form.deliverer">
-                            <Form.Label>Resp de livraison</Form.Label>
-                            <Form.Control type="text" placeholder="Enter name" />
+                            <Form.Control as="select" aria-label="Default select example">
+                              <option>Resp de livraison</option>
+                              {members && members.map(member => (
+                                <option value={member.member_id}>{member.member_name}</option>  
+                              ))
+                              }
+                            </Form.Control>
                         </Form.Group>
                         </td>
                         <td>
                         <Form.Group controlId="form.checker">
-                            <Form.Label>Controleur de livraison</Form.Label>
-                            <Form.Control type="text" placeholder="Enter name" />
+                            <Form.Control as="select" aria-label="Default select example">
+                            <option>Controleur de livraison</option>
+                              {members && members.map(member => (
+                                <option value={member.member_id}>{member.member_name}</option>  
+                              ))
+                              }
+                            </Form.Control>
                         </Form.Group>
                         </td>
                         </tr>
